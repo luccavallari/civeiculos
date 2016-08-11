@@ -1,0 +1,12 @@
+application/cache/*
+application/config/*
+application/controllers/*
+application/helpers/*
+application/hooks/*
+application/language/*
+application/libraries/*
+application/logs/*
+application/models/*
+application/views/*
+system/*
+index.php
