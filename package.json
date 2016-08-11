@@ -1,0 +1,24 @@
+{
+  "name": "civeiculos",
+  "version": "1.0.0",
+  "description": "sistema para revenda de veiculos",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagopgeremias/civeiculos.git"
+  },
+  "keywords": [
+    "revenda",
+    "veiculos",
+    "sistemas"
+  ],
+  "author": "Tiago Geremias <tiagopgeremias@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tiagopgeremias/civeiculos/issues"
+  },
+  "homepage": "https://github.com/tiagopgeremias/civeiculos#readme"
+}
