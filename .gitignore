@@ -9,4 +9,5 @@ application/views/*
 system/*
 
 bower_components/*
+node_modules/*
 assets/dist/*
