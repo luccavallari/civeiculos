@@ -1,0 +1,13 @@
+.setup-body{
+  background-color: #262831;
+}
+.setup-text{
+  color: #9da1b4;
+}
+.box-setup{
+  border: 1px solid #1d1f26;
+  border-radius: 5px;
+  margin-top: 150px;
+  padding-bottom: 20px;
+  background-color: #323541;
+}

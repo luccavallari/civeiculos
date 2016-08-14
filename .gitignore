@@ -1,5 +1,4 @@
 application/cache/*
-application/config/*
 application/controllers/*
 application/hooks/*
 application/language/*
