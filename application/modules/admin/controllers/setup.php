@@ -12,7 +12,10 @@ class Setup extends MY_Controller{
    * index
    */
   function index(){
-    $this->load->view('setup/index_view');
+    $data['js_inject'] = [
+      'assets/dist/js/setupapp.angular.min.js'
+    ];
+    $this->load->view('setup/index_view',$data);
   }
 
   /**

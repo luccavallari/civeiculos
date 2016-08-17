@@ -7,6 +7,7 @@ var rename      = require('gulp-rename');
 var imageop     = require('gulp-image-optimization');
 var minifyHTML  = require('gulp-minify-html');
 var jshint      = require('gulp-jshint');
+var less        = require('gulp-less');
 
 
 var dest_js     = 'assets/dist/js';
@@ -25,7 +26,11 @@ var images_files = [
 ];
 
 var html_files = [
-  'assets/src/html/*.html'
+  'assets/src/html/**/*.html'
+];
+
+var less_files = [
+  'assets/src/less/*.less'
 ];
 
 var style_files = [
@@ -69,8 +74,8 @@ gulp.task('minify-html', function() {
 
 gulp.task('appBuild',function(){
   gulp.src(app_files)
-    .pipe(concat('app.min.js'))
     .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(dest_js))
 });
 
@@ -79,6 +84,14 @@ gulp.task('jsBuild',function(){
     .pipe(concat('components.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(dest_js))
+});
+
+gulp.task('less',function(){
+  gulp.src(less_files)
+    .pipe(less())
+    .pipe(cssmin())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest(dest_css))
 });
 
 gulp.task('styleBuild',function(){
@@ -101,7 +114,7 @@ gulp.task('imagesCompress', function() {
 gulp.task('angularBuild',function(){
   gulp.src(angular_files)
     .pipe(strip())
-    .pipe(concat('app_lib.min.js'))
+    .pipe(concat('angular_components.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(dest_js))
 });
@@ -114,6 +127,7 @@ gulp.task('watch', function() {
   gulp.watch(app_files, ['jshint']);
   gulp.watch(js_files, ['jshint']);
   gulp.watch(style_files, ['styleBuild']);
+  gulp.watch(less_files, ['less']);
   gulp.watch(js_files, ['jsBuild']);
   gulp.watch(html_files,['minify-html']);
   gulp.watch(app_files, ['appBuild']);
