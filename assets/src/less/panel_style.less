@@ -1,0 +1,39 @@
+/*
+	TELA DE SETUP
+*/
+@tela_setup: #262831;
+@texto_setup: #9da1b4;
+@texto_claro: #d5d9f1;
+@tela_setup_secundario: #323541;
+@borda_setup: #1d1f26;
+
+.setup-body{
+  	background-color: @tela_setup;
+	.box-setup{
+	 	border: 1px solid @borda_setup;
+		border-radius: 5px;
+	  	margin-top: 150px;
+	  	padding-bottom: 20px;
+	  	background-color: @tela_setup_secundario;
+	  	.setup-text{
+			color: @texto_setup;
+		}
+		h1{
+			color: @texto_claro;
+		}
+		textarea{
+			min-height: 200px;
+			max-height: 200px;
+			max-width: 100%;
+		}
+		label{
+			text-align: left;
+		}
+		hr{
+			border-color: @tela_setup;
+			margin-bottom: 5px;
+			margin-top: 2px;
+		}
+	}
+}
+
