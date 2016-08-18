@@ -50,6 +50,20 @@ app.controller("setupHomeCtrl",["$scope",function($scope){
   console.log('setupHomeCtrl')
 }]);
 
-app.controller("setupDatabaseCtrl",["$scope",function($scope){
-  console.log('setupDatabaseCtrl')
+app.controller("setupDatabaseCtrl",["$scope","$http",function($scope,$http){
+  $scope.db_configs = {};
+  $scope.db_configs_error = false;
+
+  $scope.saveDatabaseConfig = function () {
+    if($scope.db_configs_error)
+      $scope.db_configs_error = false;
+    
+    $http.post('setup/saveDb',$scope.db_configs).then(function (suc) {
+       console.log(suc)
+    },function (err) {
+       console.log(err)
+       $scope.db_configs_error = true;
+    });
+  }
+
 }]);

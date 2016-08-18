@@ -4,20 +4,46 @@
 	</h1>
 	<p class="setup-text text-center">Configuração do Banco de dados MySQL</p>
 	<hr>
-	<form>
-		<label class="setup-text" for="server">Servidor:</label>
-		<input type="text" name="server" class="form-control" placeholder="127.0.0.1">
+
+	<div ng-if="db_configs_error" class="alert alert-danger small-alert" role="alert">
+		<strong>Ops!</strong>
 		<br>
-		<label class="setup-text" for="user">Usuário:</label>
-		<input type="text" name="user" class="form-control" placeholder="root">
+		<small>Ocorreu um erro ao conctar-se ao servidor MySQL.</small>
 		<br>
-		<label class="setup-text" for="password">Senha:</label>
-		<input type="password" name="password" class="form-control" placeholder="********">
-		<br>
-		<label class="setup-text" for="database">Banco de dados:</label>
-		<input type="text" name="database" class="form-control" placeholder="civdatabase">
-		<br>
-		<button class="btn btn-default">Próximo</button>
+		<small>Verifique os campos preenchidos e tente novamente.</small>
+	</div>
+
+	<form name="dbform" novalidate>
+
+		<div ng-class="dbform.db_server.$valid ? 'has-success' : 'has-error'" class="form-group has-feedback">
+  			<label class="control-label setup-text" for="db_server">Servidor</label>
+  			<input type="text" class="form-control" pattern=".{5,}" ng-model="db_configs.db_server" name="db_server" placeholder="127.0.0.1" required>
+  			<span ng-if="!dbform.db_server.$valid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  			<span ng-if="dbform.db_server.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		</div>
+		
+		<div ng-class="dbform.db_user.$valid ? 'has-success' : 'has-error'" class="form-group has-feedback">
+  			<label class="control-label setup-text" for="db_user">Usuário</label>
+  			<input type="text" class="form-control" ng-model="db_configs.db_user" name="db_user" placeholder="root" required>
+  			<span ng-if="!dbform.db_user.$valid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  			<span ng-if="dbform.db_user.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		</div>
+		
+		<div ng-class="dbform.db_password.$valid ? 'has-success' : 'has-error'" class="form-group has-feedback">
+  			<label class="control-label setup-text" for="db_password">Senha</label>
+  			<input type="password" class="form-control" ng-model="db_configs.db_password" name="db_password" placeholder="">
+  			<span ng-if="!dbform.db_password.$valid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  			<span ng-if="dbform.db_password.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		</div>
+
+		<div ng-class="dbform.db_name.$valid ? 'has-success' : 'has-error'" class="form-group has-feedback">
+  			<label class="control-label setup-text" for="db_name">Banco de dados</label>
+  			<input type="text" class="form-control" ng-model="db_configs.db_name" name="db_name" placeholder="cidatabas" required>
+  			<span ng-if="!dbform.db_name.$valid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  			<span ng-if="dbform.db_name.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+		</div>
+
+		<button ng-click="saveDatabaseConfig()" ng-disabled="!dbform.db_server.$valid || !dbform.db_name.$valid || !dbform.db_user.$valid" class="btn btn-default">Próximo</button>
 	</form>
 
 </div>
