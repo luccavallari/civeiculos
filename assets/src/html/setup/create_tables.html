@@ -1,0 +1,31 @@
+<div>
+	
+	<h1 class="text-center">
+		CIV Revendas
+	</h1>
+	<p class="setup-text text-center">Criando as tabelas do banco de dados.</p>
+	<hr>
+
+	<div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+		    	<span class="sr-only">40% Complete</span>
+		  	</div>
+		</div>
+	</div>
+
+	<div ng-if="error" class="alert alert-danger small-alert" role="alert">
+		<strong>Ops! Ocorreu um erro.</strong>
+		<br>
+		<small>{{error_message}}.</small>
+	</div>
+
+	<div ng-if="loading" class="setup_loading">
+		<img alt="Carregando..." src="../assets/dist/images/loading.gif">
+		<p>Criando tabelas, aguarde...</p>
+	</div>
+
+	<div ng-if="!loading && error" class="text-center">
+		<button ng-click="createTables()" class="btn btn-default">Tentar novamente</button>
+	</div>
+</div>

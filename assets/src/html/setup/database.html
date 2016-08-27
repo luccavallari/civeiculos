@@ -5,15 +5,26 @@
 	<p class="setup-text text-center">Configuração do Banco de dados MySQL</p>
 	<hr>
 
-	<div ng-if="db_configs_error" class="alert alert-danger small-alert" role="alert">
-		<strong>Ops!</strong>
-		<br>
-		<small>Ocorreu um erro ao conctar-se ao servidor MySQL.</small>
-		<br>
-		<small>Verifique os campos preenchidos e tente novamente.</small>
+	<div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+		    	<span class="sr-only">20% Complete</span>
+		  	</div>
+		</div>
 	</div>
 
-	<form name="dbform" novalidate>
+	<div ng-if="db_configs_error" class="alert alert-danger small-alert" role="alert">
+		<strong>Ops! Ocorreu um erro.</strong>
+		<br>
+		<small>{{db_error_message}}.</small>
+	</div>
+
+	<div ng-if="loading" class="setup_loading">
+		<img alt="Carregando..." src="../assets/dist/images/loading.gif">
+		<p>Conectando ao servidor MySQL...</p>
+	</div>
+
+	<form ng-if="!loading" name="dbform" novalidate>
 
 		<div ng-class="dbform.db_server.$valid ? 'has-success' : 'has-error'" class="form-group has-feedback">
   			<label class="control-label setup-text" for="db_server">Servidor</label>

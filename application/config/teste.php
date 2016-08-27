@@ -4,14 +4,14 @@ $query_builder = TRUE;
 $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '',
+	'hostname' => 'localhost',
 	'username' => '',
 	'password' => '',
 	'database' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
